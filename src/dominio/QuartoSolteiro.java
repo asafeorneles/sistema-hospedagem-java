@@ -8,17 +8,23 @@ public class QuartoSolteiro extends Quarto {
         this.valorCamaExtra = valorCamaExtra;
     }
 
-    @Override
-    public void calcularAcressimo(int quantidade) {
-        this.valorAcressimo = quantidade * valorCamaExtra;
+    public QuartoSolteiro(double valorDiaria, boolean arCondicionado, boolean hidromassagem, double valorCamaExtra, Residencia residencia) {
+        super(valorDiaria, arCondicionado, hidromassagem, residencia);
+        this.valorCamaExtra = valorCamaExtra;
     }
 
     @Override
-    public void calcularDiariaFinal() {
-        this.valorDiaria += this.valorAcressimo;
+    public void calcularAcressimo(int quantidade) {
+        this.valorAcressimo += quantidade * valorCamaExtra;
+    }
+
+    @Override
+    public void calcularValorFinal(int diarias) {
+        this.valorTotal = (this.valorDiaria + this.valorAcressimo) * diarias;
     }
 
     public double getValorCamaExtra() {
         return valorCamaExtra;
     }
+
 }

@@ -5,6 +5,8 @@ public abstract class Quarto implements Acressimo {
     protected boolean arCondicionado;
     protected boolean hidromassagem;
     protected double valorAcressimo;
+    protected double valorTotal;
+    protected Residencia residencia;
 
     public Quarto(double valorDiaria, boolean arCondicionado, boolean hidromassagem) {
         this.valorDiaria = valorDiaria;
@@ -12,10 +14,15 @@ public abstract class Quarto implements Acressimo {
         this.hidromassagem = hidromassagem;
     }
 
+    public Quarto(double valorDiaria, boolean arCondicionado, boolean hidromassagem, Residencia residencia) {
+        this(valorDiaria, arCondicionado, hidromassagem);
+        this.residencia = residencia;
+    }
+
     @Override
     public abstract void calcularAcressimo(int quantidade);
 
-    public abstract void calcularDiariaFinal();
+    public abstract void calcularValorFinal(int diarias);
 
     public double getValorDiaria() {
         return valorDiaria;
@@ -23,5 +30,13 @@ public abstract class Quarto implements Acressimo {
 
     public double getValorAcressimo() {
         return valorAcressimo;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
+
+    public Residencia getResidencia() {
+        return residencia;
     }
 }

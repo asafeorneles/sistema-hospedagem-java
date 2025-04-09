@@ -1,17 +1,11 @@
 package servico;
 
-public class CalcularDiaria {
-    private int diaIn;
-    private int diaOut;
-    private int mesIn;
-    private int mesOut;
-    private int anoIn;
-    private int anoOut;
-    private double horarioIn;
-    private double horarioOut;
-    private int diarias;
+import dominio.Quarto;
 
-    public void CalcularDiaria() {
+public class CalcularDiaria {
+
+    public static int CalcularDiaria(int diaIn, int mesIn, int anoIn, double horarioIn, int diaOut, int mesOut, int anoOut, double horarioOut) {
+        int diarias = 0;
         while (anoIn < anoOut || mesIn < mesOut || diaIn < diaOut) {
             diarias++;
             diaIn++;
@@ -33,78 +27,13 @@ public class CalcularDiaria {
         if (diarias == 0) {
             diarias = 1;
         }
+
+        return diarias == 0 ? 1 : diarias;
+        // “Se a variável diarias for igual a 0, então retorne 1. Caso contrário, retorne o valor de diarias.”
     }
 
-    public static int diasMeses(int mesOut) {
+    public static int diasMeses(int mesIn) {
         int[] dias = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-        return dias[mesOut - 1];
-    }
-
-    public int getDiaIn() {
-        return diaIn;
-    }
-
-    public void setDiaIn(int diaIn) {
-        this.diaIn = diaIn;
-    }
-
-    public int getDiaOut() {
-        return diaOut;
-    }
-
-    public void setDiaOut(int diaOut) {
-        this.diaOut = diaOut;
-    }
-
-    public int getMesIn() {
-        return mesIn;
-    }
-
-    public void setMesIn(int mesIn) {
-        this.mesIn = mesIn;
-    }
-
-    public int getMesOut() {
-        return mesOut;
-    }
-
-    public void setMesOut(int mesOut) {
-        this.mesOut = mesOut;
-    }
-
-    public double getHorarioIn() {
-        return horarioIn;
-    }
-
-    public void setHorarioIn(double horarioIn) {
-        this.horarioIn = horarioIn;
-    }
-
-    public double getHorarioOut() {
-        return horarioOut;
-    }
-
-    public void setHorarioOut(double horarioOut) {
-        this.horarioOut = horarioOut;
-    }
-
-    public int getAnoIn() {
-        return anoIn;
-    }
-
-    public void setAnoIn(int anoIn) {
-        this.anoIn = anoIn;
-    }
-
-    public int getAnoOut() {
-        return anoOut;
-    }
-
-    public void setAnoOut(int anoOut) {
-        this.anoOut = anoOut;
-    }
-
-    public int getDiarias() {
-        return diarias;
+        return dias[mesIn - 1];
     }
 }
