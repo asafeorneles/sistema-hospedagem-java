@@ -31,8 +31,8 @@ java test.HospedagemTest02
 
 Projeto em desenvolvimento contínuo. Pretendo adicionar:
 - Armazenamento em arquivos
-- Interface gráfica
 - Banco de dados
+- Listas
 
 ## Meu Linkedin:
 https://www.linkedin.com/in/asafeorneles
