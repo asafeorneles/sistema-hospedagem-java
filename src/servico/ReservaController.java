@@ -4,7 +4,7 @@ import dominio.*;
 
 import java.util.Scanner;
 
-public class ReservaController02 {
+public class ReservaController {
 
     public static void iniciar(Scanner entrada) {
 

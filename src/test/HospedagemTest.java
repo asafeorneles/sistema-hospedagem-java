@@ -1,12 +1,12 @@
 package test;
 
-import servico.ReservaController02;
+import servico.ReservaController;
 
 import java.util.Scanner;
 
-public class HospedagemTest02 {
+public class HospedagemTest {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-        ReservaController02.iniciar(entrada);
+        ReservaController.iniciar(entrada);
     }
 }
