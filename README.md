@@ -33,3 +33,6 @@ Projeto em desenvolvimento contínuo. Pretendo adicionar:
 - Armazenamento em arquivos
 - Interface gráfica
 - Banco de dados
+
+## Meu Linkedin:
+https://www.linkedin.com/asafeorneles
