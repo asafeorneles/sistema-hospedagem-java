@@ -35,4 +35,4 @@ Projeto em desenvolvimento contínuo. Pretendo adicionar:
 - Banco de dados
 
 ## Meu Linkedin:
-https://www.linkedin.com/asafeorneles
+https://www.linkedin.com/in/asafeorneles
