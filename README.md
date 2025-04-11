@@ -24,8 +24,8 @@ Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Ja
 https://github.com/asafeorneles/sistema-hospedagem-java.git
 
 3. Compile e execute:
-javac test/HospedagemTest02.java
-java test.HospedagemTest02
+javac test/HospedagemTest.java
+java test.HospedagemTest
 
 ## 📌 Observações
 
