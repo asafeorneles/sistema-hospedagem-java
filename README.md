@@ -18,14 +18,26 @@ Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Ja
 - Entrada via terminal (`Scanner`)
 - Organização em pacotes (`dominio`, `servico`, `test`)
 
-## 📂 Como executar
+## 💻 Como executar o projeto localmente
+
+### ✅ Pré-requisitos
+
+- [Java JDK 11+](https://www.oracle.com/java/technologies/javase-downloads.html) instalado
+- [Git](https://git-scm.com/) instalado (opcional, apenas para clonar)
+- Um terminal (CMD, PowerShell, Git Bash ou terminal da sua IDE)
+
+### 🔧 Passos:
 
 1. Clone o repositório:
+
+```bash
 https://github.com/asafeorneles/sistema-hospedagem-java.git
 
-3. Compile e execute:
-javac test/HospedagemTest.java
-java test.HospedagemTest
+Compile o projeto:
+javac test/HospedagemTest02.java
+
+Execute o projeto:
+java test.HospedagemTest02
 
 ## 📌 Observações
 
