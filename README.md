@@ -29,8 +29,7 @@ Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Ja
 ### 🔧 Passos:
 
 1. Clone o repositório:
-
-```bash
+2. 
 https://github.com/asafeorneles/sistema-hospedagem-java.git
 
 Compile o projeto:
