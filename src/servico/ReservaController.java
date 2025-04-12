@@ -36,7 +36,7 @@ public class ReservaController {
         System.out.println("Bem vindo! Por favor, informe os dados do cliente:");
         System.out.println("Nome:" );
         String nome = entrada.nextLine();
-        System.out.println("Cpg: ");
+        System.out.println("Cpf: ");
         String cpf = entrada.nextLine();
         System.out.println("Endereco:" );
         String endereco = entrada.nextLine();
@@ -80,6 +80,7 @@ public class ReservaController {
                 if (quarto instanceof QuartoSolteiro) {
                     QuartoSolteiro solteiro = (QuartoSolteiro) quarto;
                     System.out.println("1 - Quarto de solteiro:\nValor da diaria: " + solteiro.getValorDiaria() + "\nValor do acrescimo de camas: " + solteiro.getValorCamaExtra());
+                    System.out.println();
                     quartoSolteiro = solteiro;
                     continue;
                 } else if (quarto instanceof QuartoCasal) {
@@ -87,7 +88,6 @@ public class ReservaController {
                     System.out.println("2 - Quarto de casal:\nValor da diaria: " + casal.getValorDiaria() + "\nValor do acrescimo de bercos: " + casal.getValorBercoExtra());
                     quartoCasal = casal;
                 }
-                System.out.println("3 - Voltar");
             }
             opcao = entrada.nextInt();
             switch (opcao) {
@@ -97,13 +97,11 @@ public class ReservaController {
                 case 2:
                     adicionarBercosExtras(quartoCasal, entrada);
                     break;
-                case 3:
-                    break;
-                default: System.out.println("Selecione apenas 1, 2 ou 3!");
+                default: System.out.println("Selecione apenas 1, ou 2!");
                 break;
             }
         }
-        while (opcao < 1 || opcao > 3);
+        while (opcao < 1 || opcao > 2);
     }
 
     public static void adicionarCamasExtras(Quarto quarto, Scanner entrada) {
@@ -111,7 +109,6 @@ public class ReservaController {
         do {
             System.out.println("1 - Adicionar camas extras");
             System.out.println("2 - Fazer reserva");
-            System.out.println("3 - Voltar");
             opcao = entrada.nextInt();
 
             switch (opcao) {
@@ -123,13 +120,11 @@ public class ReservaController {
                 case 2:
                     fazerReserva(entrada, quarto);
                     break;
-                case 3:
-                    break;
-                default: System.out.println("Selecione apenas 1, 2 ou 3!");
+                default: System.out.println("Selecione apenas 1, ou 2!");
                 break;
             }
         }
-        while (opcao <=1 || opcao > 3);
+        while (opcao != 2);
     }
 
     public static void adicionarBercosExtras(Quarto quarto, Scanner entrada) {
@@ -137,7 +132,6 @@ public class ReservaController {
         do {
             System.out.println("1 - Adicionar bercos extras");
             System.out.println("2 - Fazer reserva");
-            System.out.println("3 - Voltar");
             opcao = entrada.nextInt();
 
             switch (opcao) {
@@ -149,13 +143,11 @@ public class ReservaController {
                 case 2:
                     fazerReserva(entrada, quarto);
                     break;
-                case 3:
-                    break;
-                default: System.out.println("Selecione apenas 1, 2 ou 3!");
+                default: System.out.println("Selecione apenas 1, ou 2!");
                 break;
             }
         }
-        while (opcao <=1 || opcao > 3);
+        while (opcao !=2);
     }
 
     public static void fazerReserva(Scanner entrada, Quarto quarto) {
@@ -166,7 +158,7 @@ public class ReservaController {
         int mesIn = entrada.nextInt();
         System.out.println("Informe o ano do checkin: ");
         int anoIn = entrada.nextInt();
-        System.out.println("Informe o horario do checkin: ");
+        System.out.println("Informe o horario do checkin (\".\" representa \":\"): ");
         double horarioIn = entrada.nextDouble();
 
         System.out.println("Cadastro do checkout");
@@ -176,7 +168,7 @@ public class ReservaController {
         int mesOut = entrada.nextInt();
         System.out.println("Informe o ano do checout: ");
         int anoOut = entrada.nextInt();
-        System.out.println("Informe o horario do checkout: ");
+        System.out.println("Informe o horario do checkout (\".\" representa \":\"): ");
         double horarioOut = entrada.nextDouble();
 
         Reserva reserva = new Reserva(diaIn, mesIn, anoIn, horarioIn, diaOut, mesOut, anoOut, horarioOut, quarto);
