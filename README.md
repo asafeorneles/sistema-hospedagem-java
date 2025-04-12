@@ -32,10 +32,13 @@ Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Ja
 1. Clone o repositório:
 https://github.com/asafeorneles/sistema-hospedagem-java.git
 
-2. Compile o projeto:
-javac test/HospedagemTest.java
+2. Abra o terminal na pasta `src` do projeto:
+cd caminho/para/sistema-de-hospedagem/src
 
-3. Execute o projeto:
+3. Compile todos os arquivos:
+javac dominio/*.java servico/*.java test/*.java
+
+4. Execute o projeto:
 java test.HospedagemTest
 
 💡 Ou, se preferir, abra em uma IDE como IntelliJ ou Eclipse e execute a classe HospedagemTest02 diretamente.
