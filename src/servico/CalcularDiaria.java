@@ -29,7 +29,6 @@ public class CalcularDiaria {
         }
 
         return diarias == 0 ? 1 : diarias;
-        // “Se a variável diarias for igual a 0, então retorne 1. Caso contrário, retorne o valor de diarias.”
     }
 
     public static int diasMeses(int mesIn) {
