@@ -79,13 +79,13 @@ public class ReservaController {
                 Quarto quarto = quartos[i];
                 if (quarto instanceof QuartoSolteiro) {
                     QuartoSolteiro solteiro = (QuartoSolteiro) quarto;
-                    System.out.println("1 - Quarto de solteiro:\nValor da diaria: " + solteiro.getValorDiaria() + "\nValor do acrescimo de camas: " + solteiro.getValorCamaExtra());
+                    System.out.printf("1 - Quarto de solteiro:\nValor da diaria: R$ %.2f \nValor do acrescimo de camas: R$ %.2f", solteiro.getValorDiaria() , solteiro.getValorCamaExtra());
                     System.out.println();
                     quartoSolteiro = solteiro;
                     continue;
                 } else if (quarto instanceof QuartoCasal) {
                     QuartoCasal casal = (QuartoCasal) quarto;
-                    System.out.println("2 - Quarto de casal:\nValor da diaria: " + casal.getValorDiaria() + "\nValor do acrescimo de bercos: " + casal.getValorBercoExtra());
+                    System.out.printf("2 - Quarto de casal:\nValor da diaria: R$ %.2f \nValor do acrescimo de bercos: R$ %.2f", casal.getValorDiaria() , casal.getValorBercoExtra());
                     quartoCasal = casal;
                 }
             }
@@ -158,7 +158,7 @@ public class ReservaController {
         int mesIn = entrada.nextInt();
         System.out.println("Informe o ano do checkin: ");
         int anoIn = entrada.nextInt();
-        System.out.println("Informe o horario do checkin (\".\" representa \":\"): ");
+        System.out.println("Informe o horario do checkin (\",\" representa \":\"): ");
         double horarioIn = entrada.nextDouble();
 
         System.out.println("Cadastro do checkout");
@@ -168,7 +168,7 @@ public class ReservaController {
         int mesOut = entrada.nextInt();
         System.out.println("Informe o ano do checout: ");
         int anoOut = entrada.nextInt();
-        System.out.println("Informe o horario do checkout (\".\" representa \":\"): ");
+        System.out.println("Informe o horario do checkout (\",\" representa \":\"): ");
         double horarioOut = entrada.nextDouble();
 
         Reserva reserva = new Reserva(diaIn, mesIn, anoIn, horarioIn, diaOut, mesOut, anoOut, horarioOut, quarto);

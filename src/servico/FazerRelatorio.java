@@ -20,7 +20,7 @@ public class FazerRelatorio {
         System.out.println("Hora da saida: " + reserva.getHorarioOut());
         System.out.println("Total de diarias: " + reserva.getDiarias());
 
-        System.out.println("Total a pagar: " + quarto.getValorTotal());
+        System.out.printf("Total a pagar: R$ %.2f", quarto.getValorTotal());
 
     }
 }
