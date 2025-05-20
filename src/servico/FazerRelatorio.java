@@ -2,6 +2,8 @@ package servico;
 
 import dominio.*;
 
+import java.time.format.DateTimeFormatter;
+
 public class FazerRelatorio {
     public static void imprimeRelatorio(Reserva reserva) {
         System.out.println("=== RELATÓRIO DE RESERVA ===");
@@ -14,11 +16,16 @@ public class FazerRelatorio {
             System.out.println("Quarto: Casal");
         }
 
-        System.out.printf("Data da entrada: %d/%d/%d\n", reserva.getDiaIn(), reserva.getMesIn(), reserva.getAnoIn());
-        System.out.println("Hora da entrada: " + reserva.getHorarioIn());
-        System.out.printf("Data da saída: %d/%d/%d\n", reserva.getDiaOut(), reserva.getMesOut(), reserva.getAnoOut());
-        System.out.println("Hora da saida: " + reserva.getHorarioOut());
-        System.out.println("Total de diarias: " + reserva.getDiarias());
+        DateTimeFormatter DataForrmatterBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter TimeForrmatterBR = DateTimeFormatter.ofPattern("HH:mm");
+
+        System.out.println("Data do checkin: " + reserva.getDataCheckin().format(DataForrmatterBR));
+        System.out.println("Horário do checkin: " + reserva.getDataCheckin().format(TimeForrmatterBR));
+
+        System.out.println("Data do checkout: " + reserva.getDataCheckout().format(DataForrmatterBR));
+        System.out.println("Horário do checkout: " + reserva.getDataCheckout().format(TimeForrmatterBR));
+
+        System.out.println("Quantidade de diárias: " + reserva.getDiarias());
 
         System.out.printf("Total a pagar: R$ %.2f", quarto.getValorTotal());
 

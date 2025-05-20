@@ -19,7 +19,7 @@ public class QuartoSolteiro extends Quarto {
     }
 
     @Override
-    public void calcularValorFinal(int diarias) {
+    public void calcularValorFinal(long diarias) {
         this.valorTotal = (this.valorDiaria + this.valorAcressimo) * diarias;
     }
 

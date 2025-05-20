@@ -22,7 +22,7 @@ public abstract class Quarto implements Acressimo {
     @Override
     public abstract void calcularAcressimo(int quantidade);
 
-    public abstract void calcularValorFinal(int diarias);
+    public abstract void calcularValorFinal(long diarias);
 
     public double getValorDiaria() {
         return valorDiaria;

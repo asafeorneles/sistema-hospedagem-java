@@ -2,6 +2,11 @@ package servico;
 
 import dominio.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ReservaController {
@@ -79,13 +84,13 @@ public class ReservaController {
                 Quarto quarto = quartos[i];
                 if (quarto instanceof QuartoSolteiro) {
                     QuartoSolteiro solteiro = (QuartoSolteiro) quarto;
-                    System.out.printf("1 - Quarto de solteiro:\nValor da diaria: R$ %.2f \nValor do acrescimo de camas: R$ %.2f", solteiro.getValorDiaria() , solteiro.getValorCamaExtra());
+                    System.out.printf("1 - Quarto de solteiro:\nValor da diaria: R$ %.2f \nValor do acrescimo de camas: R$ %.2f\n", solteiro.getValorDiaria() , solteiro.getValorCamaExtra());
                     System.out.println();
                     quartoSolteiro = solteiro;
                     continue;
                 } else if (quarto instanceof QuartoCasal) {
                     QuartoCasal casal = (QuartoCasal) quarto;
-                    System.out.printf("2 - Quarto de casal:\nValor da diaria: R$ %.2f \nValor do acrescimo de bercos: R$ %.2f", casal.getValorDiaria() , casal.getValorBercoExtra());
+                    System.out.printf("2 - Quarto de casal:\nValor da diaria: R$ %.2f \nValor do acrescimo de bercos: R$ %.2f\n", casal.getValorDiaria() , casal.getValorBercoExtra());
                     quartoCasal = casal;
                 }
             }
@@ -98,7 +103,7 @@ public class ReservaController {
                     adicionarBercosExtras(quartoCasal, entrada);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
-                break;
+                    break;
             }
         }
         while (opcao < 1 || opcao > 2);
@@ -121,7 +126,7 @@ public class ReservaController {
                     fazerReserva(entrada, quarto);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
-                break;
+                    break;
             }
         }
         while (opcao != 2);
@@ -144,39 +149,92 @@ public class ReservaController {
                     fazerReserva(entrada, quarto);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
-                break;
+                    break;
             }
         }
         while (opcao !=2);
     }
 
     public static void fazerReserva(Scanner entrada, Quarto quarto) {
-        System.out.println("Cadastro do checkin");
-        System.out.println("Informe o dia do checkin: ");
-        int diaIn = entrada.nextInt();
-        System.out.println("Informe o mes do checkin: ");
-        int mesIn = entrada.nextInt();
-        System.out.println("Informe o ano do checkin: ");
-        int anoIn = entrada.nextInt();
-        System.out.println("Informe o horario do checkin (\",\" representa \":\"): ");
-        double horarioIn = entrada.nextDouble();
+        entrada.nextLine();
 
-        System.out.println("Cadastro do checkout");
-        System.out.println("Informe o dia do checkout: ");
-        int diaOut = entrada.nextInt();
-        System.out.println("Informe o mes do checkout: ");
-        int mesOut = entrada.nextInt();
-        System.out.println("Informe o ano do checout: ");
-        int anoOut = entrada.nextInt();
-        System.out.println("Informe o horario do checkout (\",\" representa \":\"): ");
-        double horarioOut = entrada.nextDouble();
+        DateTimeFormatter formatterDateBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatterHoraBR = DateTimeFormatter.ofPattern("HH:mm");
 
-        Reserva reserva = new Reserva(diaIn, mesIn, anoIn, horarioIn, diaOut, mesOut, anoOut, horarioOut, quarto);
+        boolean dataValida = false;
 
-        int diarias = CalcularDiaria.CalcularDiaria(diaIn, mesIn, anoIn, horarioIn, diaOut, mesOut, anoOut, horarioOut);
-        reserva.setDiarias(diarias);
+        LocalDate dataCheckin = null;
+        LocalTime horaCheckin = null;
+        LocalDate dataCheckout = null;
+        LocalTime horaCheckout = null;
 
-        quarto.calcularValorFinal(diarias);
-        FazerRelatorio.imprimeRelatorio(reserva);
+        while (!dataValida) {
+            System.out.println("Cadastro do checkin");
+
+            System.out.println("Informe a data do checkin (dd/MM/yyyy): ");
+            String sDataCheckin = entrada.nextLine();
+            try {
+                dataCheckin = LocalDate.parse(sDataCheckin, formatterDateBR);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Tente novamente.");
+                continue;
+            }
+
+            System.out.println("Informe o horário do checkin (HH:mm):");
+            String sHoraCheckin = entrada.nextLine();
+
+            try {
+                horaCheckin = LocalTime.parse(sHoraCheckin, formatterHoraBR);
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Tente novamente.");
+                continue;
+            }
+
+            System.out.println("Cadastro do checkout");
+
+            System.out.println("Informe a data do checkout (dd/MM/yyyy): ");
+            String sDataCheckout = entrada.nextLine();
+            try {
+                dataCheckout = LocalDate.parse(sDataCheckout, formatterDateBR);
+                if (dataCheckin.isAfter(dataCheckout )){
+                    System.out.println("O dia do checkout deve ser após o checkin. Tente novamente.");
+                    continue;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Tente novamente.");
+                continue;
+            }
+
+            System.out.println("Informe o horário do checkout (HH:mm):");
+            String sHoraCheckout = entrada.nextLine();
+            try {
+                horaCheckout = LocalTime.parse(sHoraCheckout, formatterHoraBR);
+
+            } catch (DateTimeParseException e) {
+                System.out.println("Formato inválido! Tente novamente.");
+                continue;
+            }
+
+            LocalDateTime localDataCheckin = LocalDateTime.of(dataCheckin, horaCheckin);
+            LocalDateTime localDataCheckout = LocalDateTime.of(dataCheckout, horaCheckout);
+
+            if (!localDataCheckin.isBefore(localDataCheckout)){
+                System.out.println("O checkout deve ser após o checkin. Tente novamente");
+                continue;
+            }
+
+            Reserva reserva = new Reserva(localDataCheckin, localDataCheckout, quarto);
+
+            long diarias = CalcularDiaria.CalcularDiaria(localDataCheckin, localDataCheckout);
+
+            reserva.setDiarias(diarias);
+
+            quarto.calcularValorFinal(diarias);
+            FazerRelatorio.imprimeRelatorio(reserva);
+
+            dataValida = true;
+
+        }
+
     }
 }
