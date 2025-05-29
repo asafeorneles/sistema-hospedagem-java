@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 public class FazerRelatorio {
     public static void imprimeRelatorio(Reserva reserva) {
 
-        File file = new File("relatorio.txt");
+        File file = new File("src/data/relatorio.txt");
         try (FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw)){
 
@@ -79,7 +79,6 @@ public class FazerRelatorio {
             bw.write(Sdiarias);
             bw.newLine();
             bw.write(valorTotal);
-            bw.newLine();
 
             bw.flush();
 
