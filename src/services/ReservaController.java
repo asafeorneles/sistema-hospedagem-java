@@ -1,6 +1,6 @@
-package servico;
+package services;
 
-import dominio.*;
+import model.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -33,11 +33,12 @@ public class ReservaController {
         residenciaB.setQuartos(quartosB);
         residenciaC.setQuartos(quartosC);
 
-        cadastroCliente(entrada);
-        escolherResidencia(residenciaA, residenciaB, residenciaC, entrada);
+        cadastroCliente();
+        escolherResidencia(residenciaA, residenciaB, residenciaC);
     }
 
-    public static void cadastroCliente(Scanner entrada) {
+    public static void cadastroCliente() {
+        Scanner entrada = new Scanner(System.in);
         System.out.println("Bem vindo! Por favor, informe os dados do cliente:");
         System.out.println("Nome:" );
         String nome = entrada.nextLine();
@@ -53,7 +54,8 @@ public class ReservaController {
         Cliente cliente = new Cliente(nome, cpf, endereco, telefone, email);
     }
 
-    public static void escolherResidencia(Residencia a, Residencia b, Residencia c, Scanner entrada) {
+    public static void escolherResidencia(Residencia a, Residencia b, Residencia c) {
+        Scanner entrada = new Scanner(System.in);
         int opcao;
         do {
             System.out.println("Escolha um residencia:");
@@ -63,9 +65,9 @@ public class ReservaController {
             opcao = entrada.nextInt();
 
             switch (opcao) {
-                case 1: escolherQuarto(a.getQuartos(), entrada); break;
-                case 2: escolherQuarto(b.getQuartos(), entrada); break;
-                case 3: escolherQuarto(c.getQuartos(), entrada); break;
+                case 1: escolherQuarto(a.getQuartos()); break;
+                case 2: escolherQuarto(b.getQuartos()); break;
+                case 3: escolherQuarto(c.getQuartos()); break;
                 default:
                     System.out.println("Selecione apenas 1, 2 ou 3!");
                     break;
@@ -74,7 +76,8 @@ public class ReservaController {
         while (opcao < 1 || opcao > 3);
     }
 
-    public static void escolherQuarto(Quarto [] quartos, Scanner entrada) {
+    public static void escolherQuarto(Quarto [] quartos) {
+        Scanner entrada = new Scanner(System.in);
         int opcao;
         Quarto quartoSolteiro = null;
         Quarto quartoCasal = null;
@@ -97,10 +100,10 @@ public class ReservaController {
             opcao = entrada.nextInt();
             switch (opcao) {
                 case 1:
-                    adicionarCamasExtras(quartoSolteiro, entrada);
+                    adicionarCamasExtras(quartoSolteiro);
                     break;
                 case 2:
-                    adicionarBercosExtras(quartoCasal, entrada);
+                    adicionarBercosExtras(quartoCasal);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
                     break;
@@ -109,7 +112,8 @@ public class ReservaController {
         while (opcao < 1 || opcao > 2);
     }
 
-    public static void adicionarCamasExtras(Quarto quarto, Scanner entrada) {
+    public static void adicionarCamasExtras(Quarto quarto) {
+        Scanner entrada = new Scanner(System.in);
         int opcao;
         do {
             System.out.println("1 - Adicionar camas extras");
@@ -123,7 +127,7 @@ public class ReservaController {
                     quarto.calcularAcressimo(quantidade);
                     break;
                 case 2:
-                    fazerReserva(entrada, quarto);
+                    fazerReserva(quarto);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
                     break;
@@ -132,7 +136,8 @@ public class ReservaController {
         while (opcao != 2);
     }
 
-    public static void adicionarBercosExtras(Quarto quarto, Scanner entrada) {
+    public static void adicionarBercosExtras(Quarto quarto) {
+        Scanner entrada = new Scanner(System.in);
         int opcao;
         do {
             System.out.println("1 - Adicionar bercos extras");
@@ -146,7 +151,7 @@ public class ReservaController {
                     quarto.calcularAcressimo(quantidade);
                     break;
                 case 2:
-                    fazerReserva(entrada, quarto);
+                    fazerReserva(quarto);
                     break;
                 default: System.out.println("Selecione apenas 1, ou 2!");
                     break;
@@ -155,8 +160,8 @@ public class ReservaController {
         while (opcao !=2);
     }
 
-    public static void fazerReserva(Scanner entrada, Quarto quarto) {
-        entrada.nextLine();
+    public static void fazerReserva(Quarto quarto) {
+        Scanner entrada = new Scanner(System.in);
 
         DateTimeFormatter formatterDateBR = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         DateTimeFormatter formatterHoraBR = DateTimeFormatter.ofPattern("HH:mm");
