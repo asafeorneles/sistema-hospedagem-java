@@ -16,7 +16,7 @@ Projeto desenvolvido para praticar Programação Orientada a Objetos (POO) em Ja
 
 - Java (POO)
 - Entrada via terminal (`Scanner`)
-- Organização em pacotes (`dominio`, `servico`, `test`)
+- Organização em pacotes (`model`, `services`, `application`)
 
 ## 💻 Como executar o projeto localmente
 
@@ -36,10 +36,10 @@ https://github.com/asafeorneles/sistema-hospedagem-java.git
 cd caminho/para/sistema-de-hospedagem/src
 
 3. Compile todos os arquivos:
-javac dominio/*.java servico/*.java test/*.java
+javac model/*.java services/*.java application/*.java
 
 4. Execute o projeto:
-java test.HospedagemTest
+java application.HospedagemTest
 
 💡 Ou, se preferir, abra em uma IDE como IntelliJ ou Eclipse e execute a classe HospedagemTest02 diretamente.
 ```

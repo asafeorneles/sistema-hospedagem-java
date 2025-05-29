@@ -1,6 +1,6 @@
-package test;
+package application;
 
-import servico.ReservaController;
+import services.ReservaController;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package dominio;
+package model;
 
 public abstract class Quarto implements Acressimo {
     protected double valorDiaria;

@@ -1,4 +1,4 @@
-package dominio;
+package model;
 
 public class Residencia {
     private String nome;

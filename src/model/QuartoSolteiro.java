@@ -1,4 +1,4 @@
-package dominio;
+package model;
 
 public class QuartoSolteiro extends Quarto {
     private double valorCamaExtra;

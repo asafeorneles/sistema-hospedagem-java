@@ -1,4 +1,4 @@
-package servico;
+package services;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -6,17 +6,16 @@ import java.time.temporal.ChronoUnit;
 public class CalcularDiaria {
 
     public static int CalcularDiaria(LocalDateTime dataTimeCheckin, LocalDateTime dataTimeCheckout) {
-        int diarias = 0;
 
-        long diariasTemp = ChronoUnit.DAYS.between(dataTimeCheckin, dataTimeCheckout);
+        long diariasTemp = ChronoUnit.DAYS.between(dataTimeCheckin.toLocalDate(), dataTimeCheckout.toLocalDate());
+
+        int diarias  = (int) diariasTemp;
 
         if (dataTimeCheckout.getHour() > 12 || (dataTimeCheckout.getHour() == 12 && dataTimeCheckout.getMinute() > 0)){
-            diariasTemp ++;
+            diarias++;
         }
 
-        diarias  = (int) diariasTemp;
-
-        return diarias == 0 ? 1 : diarias;
+        return diarias;
     }
 
 }
