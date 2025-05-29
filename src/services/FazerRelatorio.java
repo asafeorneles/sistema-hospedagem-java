@@ -12,6 +12,29 @@ public class FazerRelatorio {
         try (FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw)){
 
+            bw.write("=== DADOS DO CLIENTE ===");
+            bw.newLine();
+
+            String nome = reserva.getCliente().getNome();
+            bw.write("Nome: " + nome);
+            bw.newLine();
+
+            String cpf = reserva.getCliente().getCpf();
+            bw.write("Cpf: " + cpf);
+            bw.newLine();
+
+            String email = reserva.getCliente().getEmail();
+            bw.write("Email: " + email);
+            bw.newLine();
+
+            String telefone = reserva.getCliente().getTelefone();
+            bw.write("Número de contato: " + telefone);
+            bw.newLine();
+
+            String endereco = reserva.getCliente().getEndereco();
+            bw.write("Endereço: " + endereco);
+            bw.newLine();bw.newLine();
+
             bw.write("=== RELATÓRIO DE RESERVA ===");
             bw.newLine();
 

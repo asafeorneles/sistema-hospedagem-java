@@ -6,12 +6,14 @@ public class Reserva {
     protected LocalDateTime dataCheckin;
     protected LocalDateTime dataCheckout;
     protected Quarto quarto;
+    private Cliente cliente;
     private long diarias;
 
-    public Reserva(LocalDateTime dataCheckin, LocalDateTime dataCheckout, Quarto quarto) {
+    public Reserva(LocalDateTime dataCheckin, LocalDateTime dataCheckout, Quarto quarto, Cliente cliente) {
         this.dataCheckin = dataCheckin;
         this.dataCheckout = dataCheckout;
         this.quarto = quarto;
+        this.cliente = cliente;
     }
 
 
@@ -47,4 +49,11 @@ public class Reserva {
         this.diarias = diarias;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
